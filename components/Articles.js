@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import { Grid, Box, Stack, Button } from '@mui/material'
 import styled from '@mui/system/styled';
+import Paper from '@mui/material/Paper';
+
 
 const Item = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -12,6 +13,16 @@ const Item = styled('div')(({ theme }) => ({
   padding: theme.spacing(1),
   borderRadius: '4px',
   textAlign: 'center',
+  margin: '20px',
+}));
+
+const myItem = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  padding: theme.spacing(4),
+  textAlign: 'center',
+  alignItems: 'center',
+  fontSize: 20 ,
+
 }));
 
 
@@ -22,16 +33,21 @@ const Articles = ({ mdata }) => {
     <div>
 
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid className='mybox'container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {mdata.posts.map((curElem) => (
             <Grid xs={2} sm={4} key={curElem.id}>
-              <Box component="span" sx={{ p: 2 }}>
-                <Box marginRight="5px" sx={{ p: 2 }}>
-                  <Item>{curElem.tags }</Item>
-                </Box>
-                <Item><h3>{curElem.id}-{curElem.title}</h3></Item>
+              <Box  component="span" margin={5} sx={{ p: 2 }}>
+                <Stack direction="row" spacing={2} marginLeft={20} alignItems='center' >
+                  {curElem.tags.map((tag) => (
+                    <myItem><h3 className='tag'>{tag}</h3></myItem>
+                  ))
+                  }
 
-                <Item>{curElem.body}</Item>
+                </Stack>
+
+                <Item><h3 className='title'>{curElem.title}</h3></Item>
+
+                <Item className='bosy'>{curElem.body}</Item>
               </Box>
 
 

@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
 import Articles from '../components/Articles'
 
 
@@ -21,9 +19,13 @@ export default function Home({mdata}) {
   return (
     <div>
     <title>Posts via Fetch API</title>
-    <h1 align="center">Posts Via Fetch API</h1>
+    <h1 align="center" margin="20px">Posts Via Fetch API</h1>
+    <br></br>
+    <br></br>
+    <br></br>
 
     <Articles mdata={mdata}/>
+    
     </div>
   )
 }
